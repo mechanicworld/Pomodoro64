@@ -17,16 +17,18 @@ class SetupPomodoro():
         self.pomodoroTimes = pomodoroTimes
         self.pomodoroDurationSecond = 60 * pomodoroDuration
         self.pomodoroBreakSecond = 60 * pomodoroBreak
-        self.hicazGAm = [[440,300],[466,300],[554,300],[587,300],[659,300],[587,400],[554,500],[466,600],[440,1000]]
+        self.tuneHejaz = [[440,300],[466,300],[554,300],[587,300],[659,300],[587,400],[554,500],[466,600],[440,1000]]
         self.congrats = [[493,100],[440,125],[493,500],[329,1000],[523,100],[493,125],[523,250],[493,250],[440,1000],[523,100],[493,125],[523,500],[329,1000],[440,100],[392,125],[440,250],[392,250],[369,250],[440,250],[392,500]]
         self.alorsOnDance = [[415,500],[554,500],[830,650],[830,650],[830,400],[659,500],[880,500],[622,650],[622,650],[622,450]]
         self.history = {}
+
+        #Alarm Sounds Loop
     def beepPlay(self,sound,loopTime):
         while loopTime != 0:
             for i in range(0,len(sound)):
                 winsound.Beep(int(sound[i][0]),int(sound[i][1]))
             loopTime -= 1
-
+        #Time Counter
     def countPomodoro(self,seconds):
         startPomodoro = seconds
         while startPomodoro != 0:
@@ -34,17 +36,19 @@ class SetupPomodoro():
             sys.stdout.flush()
             time.sleep(1)
             startPomodoro -= 1
-
+        #Time Converter
     def converter(self,seconds):
+        
         minutes = seconds // 60
         seconds = seconds % 60
         return "{} minutes {} seconds remain".format(minutes,seconds)
-
+    # Run Pomodoro Session
     def sessionCalculate(self):
-
+        
         sessionLoop = self.pomodoroTimes
         message="CONGRATS PROFESSOR YOU GOT ALL OF POMODOROSSSS !!!"
         dutyNo = 1
+
         while sessionLoop != 0:
             os.system("cls")
             #Input from user topic of pomodor session
@@ -55,6 +59,7 @@ class SetupPomodoro():
             self.countPomodoro(self.pomodoroDurationSecond)
             os.system("cls")
             print("Session is done!")
+
             #Database logs for sessions
             with open ("pomodoroDB.json") as f:
                 data = json.load(f)
@@ -62,12 +67,15 @@ class SetupPomodoro():
             endPomodoro = datetime.datetime.now()
             dateLog = (startPomodoro.strftime("%X"),endPomodoro.strftime("%X"),endPomodoro.strftime("%x"))
             self.history["Duty #{}".format(len(temp))] = [{"pomodoroTask":duty,"dateLog":dateLog}]
-            self.addNotes()
-            self.history={}
 
+            self.addNotes()
+            #Clear Temporary History
+            self.history = {}
 
             time.sleep(2)
             self.beepPlay(self.alorsOnDance,2)
+
+            #Last Pomodoro Checker
             if sessionLoop - 1 != 0:
                 os.system("cls")
                 print("Break is running!\n")
@@ -76,13 +84,11 @@ class SetupPomodoro():
                 print("Break is done!")
                 time.sleep(2)
                 self.beepPlay(self.alorsOnDance,2)
-
             else:
                 pass
-
-
             dutyNo += 1
             sessionLoop -= 1
+
         os.system("cls")
 
         for i in message:
@@ -91,7 +97,9 @@ class SetupPomodoro():
             time.sleep(random.randint(0,3)/10)
         self.beepPlay(self.congrats,2)
 
+    #Write Sessions Data on DB
     def addNotes(self, fileName="pomodoroDB.json"):
+        ''' ADD DUTY NOTES TO JSON DB'''
         with open("pomodoroDB.json") as jsonFile:
             data = json.load(jsonFile)
             temp = data["History"]
@@ -134,13 +142,13 @@ if __name__ == "__main__":
     time.sleep(1)
     print("1")
     time.sleep(1)
-    pomodoroObj.beepPlay(pomodoroObj.hicazGAm,1)
+    pomodoroObj.beepPlay(pomodoroObj.tuneHejaz,1)
     print("GO!!GO!!GO!!GO!!GO!!GO!!")
 
     os.system("cls")
     
     #Last Pomodoro Topic
-    
+    # WIP(in process)
     
     pomodoroObj.sessionCalculate()
 
