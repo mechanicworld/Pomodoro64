@@ -1,4 +1,5 @@
 # Pomodoro64
+Oğuz DEMİR : Please do not hesitate to ask anything. https://www.linkedin.com/in/oguz-demir-engineer/
 
 This is a small CLI application for your pomodoros.
 
