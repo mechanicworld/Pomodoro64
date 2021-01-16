@@ -42,4 +42,5 @@ KEEP LEARNING !! :)
 
 BigD's Self-Taught Project
 -
-![BSP](./BSP.png)
+
+<img src="./BSP.png" width="250" height="250"></img>
