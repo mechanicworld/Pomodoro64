@@ -19,6 +19,22 @@ Try to develop a python program for learning python while practice on pomodoro t
 
 
 
+Modules:
+-
+import winsound
+
+import sys
+
+import os
+
+import time
+
+import random
+
+import datetime
+
+import json
+
 
 KEEP LEARNING !! :)
 -
