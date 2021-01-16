@@ -1,0 +1,16 @@
+{
+    "History": [
+        {
+            "Duty #0": [
+                {
+                    "dateLog": [
+                        "09:00:17",
+                        "09:01:17",
+                        "01/16/21"
+                    ],
+                    "pomodoroTask": "Test1 Happy Pomodoros! If you do not want to see firt test save delete the .json file , program will create a new one :)"
+                }
+            ]
+        }
+    ]
+}
