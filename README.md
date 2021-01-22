@@ -40,7 +40,4 @@ import json
 KEEP LEARNING !! :)
 -
 
-BigD's Self-Taught Project
--
 
-<img src="./BSP.png" width="250" height="250"></img>
